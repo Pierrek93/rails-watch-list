@@ -1,0 +1,10 @@
+<h1>Show Connected</h1>
+
+<ul>
+  <li><%="Movie Title: #{@movie.title}"%></li>
+  <li><%="Overview: #{@movie.overview}"%></li>
+  <li><%="URL: #{@movie.poster_url}"%></li>
+  <li><%="Rating: #{@movie.rating}"%></li>
+</ul>
+
+<%= link_to("Add movie to list", edit_list_path )%>

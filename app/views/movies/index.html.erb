@@ -1,0 +1,10 @@
+<h1>Index Connected</h1>
+
+
+<ul>
+  <% @movies.each.with_index do |movie, index|%>
+   <li> <%=index + 1 %> <%=link_to(movie.title, list_movie_path(@list, movie))%> </li>
+  <%end%>
+</ul>
+
+<%= link_to("Add Movie", "#")%>
