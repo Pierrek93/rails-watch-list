@@ -1,9 +1,12 @@
 <h1>List Connected</h1>
 
-<ul>
-  <% @lists.each.with_index do |list|%>
-    <li> <%=link_to(list.name, list_path(list))%> </li>
-  <%end%>
-</ul>
+<h2>Save any kind of movies</h2>
 
-<%= link_to("Create new List", new_list_path)%>
+  <h3>My Lists</h3>
+  <%= link_to "Create a movie list", new_list_path%>
+
+<ul>
+  <% @lists.each do |list| %>
+   <li><%= link_to(list.name, list_path(list) ) %></li>
+  <% end %>
+</ul>

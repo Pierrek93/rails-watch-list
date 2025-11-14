@@ -1,7 +1,12 @@
 class ListsController < ApplicationController
+  before_action :set_list, only: [:show, :destroy]
 
   def index
     @lists = List.all
+  end
+
+  def show
+    @bookmark = Bookmark.new
   end
 
   def new
@@ -11,24 +16,25 @@ class ListsController < ApplicationController
   def create
     @list = List.new(list_params)
     if @list.save
-      redirect_to lists_path
+      redirect_to root_path
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
-  def show
-    @list = List.find(params[:id])
-  end
-
-  def edit
-    @list = List.find(params[:list_id])
-    @movie = Movie.find(params[:id])
+  def destroy
+    @list.destroy
     raise
+    redirect_to root_path, status: :see_other
   end
 
   private
 
+  def set_list
+    @list = List.find(params[:id])
+  end
+
   def list_params
     params.require(:list).permit(:name)
   end
-
 end

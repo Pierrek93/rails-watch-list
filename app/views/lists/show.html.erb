@@ -1,9 +1,25 @@
 <h1>Show List Connected</h1>
 
-<h2>Movies:</h2>
+<%= link_to("Back", root_path)%>
+
+  <h1><%= @list.name %></h1>
 
 <ul>
   <li>Add movie here
 </ul>
 
-<%= link_to("Add Movie", new_list_bookmark_path(@list))%>
+<%= link_to("Add Bookmark", new_list_bookmark_path(@list))%>
+<br>
+<br>
+<h2>Bookmarks here</h2>
+
+
+<ul>
+
+  <% @list.bookmarks.each do |bookmark| %>
+    <li>
+      <strong><%= bookmark.movie.title %></strong><br>
+      <em><%= bookmark.comment %></em>
+    </li>
+  <% end %>
+</ul>
